@@ -1,0 +1,20 @@
+/******************************************************************************
+ * src/styles/index.scss
+ *
+ * The guide for setting up this styling came from the following article:
+ * https://dev.to/sabatesduran/add-custom-bootstrap-4-sass-to-create-react-app
+ *
+ * NOTES: 
+ * -  To add more .scss files, I need to prefix with a '_' and import in the
+ *    index.scss file. I was able to import and add global variables in the
+ *    '_checkbook.scss' file.
+ ******************************************************************************/
+
+// My Bootstrap configuration
+@import 'custom_bootstrap';
+
+// Bootstrap library
+@import 'bootstrap/scss/bootstrap';
+
+// Checkbook Styles
+@import 'checkbook';

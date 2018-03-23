@@ -1,6 +1,5 @@
 /******************************************************************************
- * scss/custom.scss
+ * src/styles/_custom_boostrap.scss
  ******************************************************************************/
-
-// Import all of the bootstrap modules - shortcut way
-@import "node_modules/bootstrap/scss/bootstrap";
+$state-danger-bg:       pink;
+$body-bkgrd:            blue;
