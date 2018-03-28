@@ -9,23 +9,20 @@ const AccountBalance = (props) => {
   return (
     <div className="row account-balance-row">
       <div className="col-4">
-        <AmountBox 
-          type  = {"credit"} 
-          text  = {"Credits"} 
+        <AmountBox  
+          label = {"Credits"} 
           total = {props.credits} 
         />
       </div>
       <div className="col-4">
         <AmountBox 
-          type  = {"debit"} 
-          text  = {"Debits"} 
+          label = {"Debits"} 
           total = {props.debits} 
         />
       </div>
       <div className="col-4">
         <AmountBox 
-          type  = {"balance"} 
-          text  = {"Balance"} 
+          label = {"Balance"} 
           total = {props.balance} 
         />
       </div>
@@ -33,6 +30,13 @@ const AccountBalance = (props) => {
   )
 }
 
+// Prop-Types
+AccountBalance.propTypes = {
+  credits:  PropTypes.number.isRequired,
+  debits:   PropTypes.number.isRequired,
+  balance:  PropTypes.number.isRequired,
+}
+
+// Export component
 export default AccountBalance
 
-// Prop-Types

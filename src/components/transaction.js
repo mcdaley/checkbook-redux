@@ -6,7 +6,7 @@ import PropTypes      from 'prop-types'
 
 const Transaction = (props) => {
   return (
-    <tr>
+    <tr id={`transaction-id-${props.transaction.id}`}>
       <td className="text-left">  {props.transaction.date}         </td>
       <td className="text-left">  {props.transaction.description}  </td>
       <td className="text-right"> {props.transaction.amount}       </td>
@@ -15,4 +15,16 @@ const Transaction = (props) => {
   )
 }
 
+// PropTypes
+Transaction.propTypes = {
+  transaction: PropTypes.shape({
+    id:           PropTypes.number.isRequired,
+    date:         PropTypes.string.isRequired,
+    description:  PropTypes.string.isRequired,
+    amount:       PropTypes.number.isRequired,
+  }).isRequired,
+}
+
+// Export component
 export default Transaction
+

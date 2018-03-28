@@ -8,7 +8,7 @@ const AmountBox = (props) => {
   return (
     <div className="card">
       <div className="card-header">
-        {props.text}
+        {props.label}
       </div>
       <div className="card-body account-card-body">
         <h5 className="card-title account-card-title">
@@ -19,6 +19,12 @@ const AmountBox = (props) => {
   )
 }
 
+// Prop-Types
+AmountBox.propTypes = {
+  label:  PropTypes.string.isRequired,
+  total:  PropTypes.number.isRequired,
+}
+
+// Export component
 export default AmountBox
 
-// Add Prop-Types Here

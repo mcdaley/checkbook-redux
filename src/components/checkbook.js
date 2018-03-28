@@ -2,7 +2,6 @@
 // src/components/checkbook.js
 //-----------------------------------------------------------------------------
 import React            from 'react'
-import PropTypes        from 'prop-types'
 import AccountBalance   from './account_balance'
 import TransactionList  from './transaction_list'
 
@@ -27,4 +26,5 @@ const Checkbook = () => {
   )
 }
 
+// Export component
 export default Checkbook
