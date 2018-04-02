@@ -1,8 +1,9 @@
 //-----------------------------------------------------------------------------
 // src/components/amount_box.js
 //-----------------------------------------------------------------------------
-import React        from 'react'
-import PropTypes    from 'prop-types'
+import React            from 'react'
+import PropTypes        from 'prop-types'
+import {formatCurrency} from '../utils/utils'
 
 const AmountBox = (props) => {
   return (
@@ -12,7 +13,7 @@ const AmountBox = (props) => {
       </div>
       <div className="card-body account-card-body">
         <h5 className="card-title account-card-title">
-          {props.total}
+          {formatCurrency(props.total)}
         </h5>
       </div>
     </div>
