@@ -7,13 +7,16 @@ import PropTypes  from 'prop-types'
 
 ///////////////////////////////////////////////////////////////////////////////
 // TODO: 04/03/2018
-// -  CONVERT TO REACT COMPONENT W/ STATE
-// -  IMPLEMENT THE CLEAR BUTTON
-// -  PASS IN THE TRANSACTIONS AND METHOD TO ADD TRANSACTOIN AS PROPS 
-//    FROM CHECKBOOK.
-// -  ADD THE TRANSACTION TO THE EMPTY ARRAY OF TRANSACTIONS
-// -  IMPLEMENT THE CLEAR BUTTON
+// -  [x] CONVERT TO REACT COMPONENT W/ STATE
+// -  [x] PASS IN THE TRANSACTIONS AND METHOD TO ADD TRANSACTOIN AS PROPS 
+//        FROM CHECKBOOK.
+// -  [x] ADD THE TRANSACTION TO THE EMPTY ARRAY OF TRANSACTIONS
+// -  [x] IMPLEMENT THE CLEAR BUTTON
 // -  MIGRATE ADD-TRANSACTION TO REDUX
+//
+// BUG: 04/05/2018
+// -  WHEN I ADD A TRANSACTION THE DATE IS FORMATTED AS YYYY-MM-DD INSTEAD OF
+//    MM/DD/YYYY
 ///////////////////////////////////////////////////////////////////////////////
 
 export default class AddTransaction extends React.Component {
@@ -31,6 +34,7 @@ export default class AddTransaction extends React.Component {
     this.handleDescription  = this.handleDescription.bind(this)
     this.handleAmount       = this.handleAmount.bind(this)
     this.resetInitialState  = this.resetInitialState.bind(this)
+    this.handleSubmit       = this.handleSubmit.bind(this)
     this.handleClear        = this.handleClear.bind(this)
   }
 
@@ -61,9 +65,24 @@ export default class AddTransaction extends React.Component {
     })
   }
 
+  handleSubmit(e) {
+    e.preventDefault()
+
+    let transaction  = {
+      id:           20,                 // Dummy non-unique id
+      date:         this.state.date,
+      description:  this.state.description,     
+      amount:       this.state.amount,
+    }
+
+    this.props.addTransaction(transaction)
+    this.resetInitialState()
+  }
+
   handleClear(e) {
     this.resetInitialState()
   }
+
 
   render() {
     return (
@@ -119,6 +138,7 @@ export default class AddTransaction extends React.Component {
               <div className="col-2">
                 <button 
                   type        = "submit" 
+                  onClick     = {this.handleSubmit}
                   className   = "btn btn-primary mb-2 btn-submit"
                 > 
                   Add
@@ -137,4 +157,9 @@ export default class AddTransaction extends React.Component {
       </div>
     )
   }
+}
+
+// Prop-Types
+AddTransaction.propTypes = {
+  addTransaction: PropTypes.func.isRequired,
 }
