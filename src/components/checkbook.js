@@ -4,6 +4,7 @@
 import React            from 'react'
 import AccountBalance   from './account_balance'
 import TransactionList  from './transaction_list'
+import AddTransaction   from '../containers/add_transaction'
 
 const Checkbook = () => {
 
@@ -21,6 +22,7 @@ const Checkbook = () => {
         debits  = {150.00}
         balance = {100.00}
       />
+      <AddTransaction />
       <TransactionList transactions={transactions} />
     </div>
   )
