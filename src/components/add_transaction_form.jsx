@@ -1,25 +1,19 @@
 //-----------------------------------------------------------------------------
-// src/containers/add_transaction.jsx
+// src/components/add_transaction_form.jsx
 //-----------------------------------------------------------------------------
-import React      from 'react'
-import ReactDOM   from 'react-dom'
-import PropTypes  from 'prop-types'
+import React              from 'react'
+import PropTypes          from 'prop-types'
 
 ///////////////////////////////////////////////////////////////////////////////
-// TODO: 04/03/2018
-// -  [x] CONVERT TO REACT COMPONENT W/ STATE
-// -  [x] PASS IN THE TRANSACTIONS AND METHOD TO ADD TRANSACTOIN AS PROPS 
-//        FROM CHECKBOOK.
-// -  [x] ADD THE TRANSACTION TO THE EMPTY ARRAY OF TRANSACTIONS
-// -  [x] IMPLEMENT THE CLEAR BUTTON
-// -  MIGRATE ADD-TRANSACTION TO REDUX
-//
 // BUG: 04/05/2018
 // -  WHEN I ADD A TRANSACTION THE DATE IS FORMATTED AS YYYY-MM-DD INSTEAD OF
 //    MM/DD/YYYY
 ///////////////////////////////////////////////////////////////////////////////
 
-export default class AddTransaction extends React.Component {
+// Temp way to create unique transaction ids
+var Global_Id_Ctr = 0
+
+export default class AddTransactionForm extends React.Component {
   constructor(props) {
     super(props)
     
@@ -69,10 +63,10 @@ export default class AddTransaction extends React.Component {
     e.preventDefault()
 
     let transaction  = {
-      id:           20,                 // Dummy non-unique id
+      id:           Global_Id_Ctr++,  // Dummy unique id
       date:         this.state.date,
       description:  this.state.description,     
-      amount:       this.state.amount,
+      amount:       Number(this.state.amount),
     }
 
     this.props.addTransaction(transaction)
@@ -80,6 +74,7 @@ export default class AddTransaction extends React.Component {
   }
 
   handleClear(e) {
+    e.preventDefault()
     this.resetInitialState()
   }
 
@@ -160,6 +155,6 @@ export default class AddTransaction extends React.Component {
 }
 
 // Prop-Types
-AddTransaction.propTypes = {
+AddTransactionForm.propTypes = {
   addTransaction: PropTypes.func.isRequired,
 }

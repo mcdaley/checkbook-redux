@@ -3,7 +3,7 @@
 //-----------------------------------------------------------------------------
 import React          from 'react'
 import PropTypes      from 'prop-types'
-import Transaction    from './transaction'
+import Transaction    from './transaction'  
 
 const TransactionList = (props) => {
 
@@ -36,6 +36,7 @@ const TransactionList = (props) => {
 
 export default TransactionList
 
+// Prop-Types
 TransactionList.propTypes = {
   transactions: PropTypes.arrayOf(PropTypes.shape({
     id:           PropTypes.number.isRequired,
@@ -44,3 +45,4 @@ TransactionList.propTypes = {
     amount:       PropTypes.number.isRequired,
   })).isRequired,
 }
+
