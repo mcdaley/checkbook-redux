@@ -11,8 +11,9 @@ const TransactionList = (props) => {
   props.transactions.forEach( (transaction) => {
     rows.push(
       <Transaction
-        key         = {transaction.id}
-        transaction = {transaction}
+        key               = {transaction.id}
+        transaction       = {transaction}
+        updateTransaction = {props.updateTransaction}
       />
     )
   })
