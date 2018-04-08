@@ -1,9 +1,9 @@
 //-----------------------------------------------------------------------------
 // src/components/transaction.js
 //-----------------------------------------------------------------------------
-import React            from 'react'
-import PropTypes        from 'prop-types'
-import {formatCurrency} from '../utils/utils'
+import React                        from 'react'
+import PropTypes                    from 'prop-types'
+import {formatCurrency, formatDate} from '../utils/utils'
 
 export default class Transaction extends React.Component {
   constructor(props) {
@@ -121,7 +121,7 @@ export default class Transaction extends React.Component {
         <td 
           className="text-left"
         >  
-          {this.props.transaction.date}
+          {formatDate(this.props.transaction.date)}
         </td>
         <td 
           className="text-left"
@@ -172,7 +172,7 @@ export default class Transaction extends React.Component {
                 <input  type        = "date"
                         onChange    = {this.handleDate} 
                         className   = { this.hasError('date') ? "form-control has-error" : "form-control" } 
-                        value       = {transaction.date}
+                        value       = {formatDate(transaction.date, 'YYYY-MM-DD')}
                         autoFocus >
                 </input>
                 { this.showErrorMessage('date') }

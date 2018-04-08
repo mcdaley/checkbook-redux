@@ -1,17 +1,37 @@
 //-----------------------------------------------------------------------------
 // src/reducers/index.js
 //-----------------------------------------------------------------------------
+import moment         from 'moment'
+
 import {
   ADD_TRANSACTION,
   UPDATE_TRANSACTION,
 } from '../actions'
 
+/**/
 const initialState = {
   transactions: [
-    { id: 20, date: "04/03/2018", description: "Pay Day",    amount: 200.00 },
-    { id: 21, date: "04/04/2018", description: "Urban Putt", amount: -25.00 },
+    { 
+      id:           20, 
+      date:         new Date("04/03/2018"), 
+      description:  "Pay Day",    
+      amount:       200.00 
+    },
+    { 
+      id:           21, 
+      date:         new Date("04/04/2018"), 
+      description:  "Urban Putt", 
+      amount:       -25.00 
+    },
   ],
 }
+/*/
+
+/**
+const initialState = {
+  transactions: [],
+}
+*/
 
 function recordTransaction(state, action) {
   console.log(`[INFO]: Record the transaction in the checkbook`)

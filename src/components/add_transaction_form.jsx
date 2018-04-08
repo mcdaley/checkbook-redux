@@ -64,7 +64,7 @@ export default class AddTransactionForm extends React.Component {
 
     let transaction  = {
       id:           Global_Id_Ctr++,  // Dummy unique id
-      date:         this.state.date,
+      date:         new Date(this.state.date),
       description:  this.state.description,     
       amount:       Number(this.state.amount),
     }
