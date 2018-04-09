@@ -41,7 +41,7 @@ export default TransactionList
 TransactionList.propTypes = {
   transactions: PropTypes.arrayOf(PropTypes.shape({
     id:           PropTypes.number.isRequired,
-    date:         PropTypes.string.isRequired,
+    date:         PropTypes.instanceOf(Date).isRequired,
     description:  PropTypes.string.isRequired,
     amount:       PropTypes.number.isRequired,
   })).isRequired,

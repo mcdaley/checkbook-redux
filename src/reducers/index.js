@@ -8,7 +8,6 @@ import {
   UPDATE_TRANSACTION,
 } from '../actions'
 
-/**/
 const initialState = {
   transactions: [
     { 
@@ -25,13 +24,6 @@ const initialState = {
     },
   ],
 }
-/*/
-
-/**
-const initialState = {
-  transactions: [],
-}
-*/
 
 function recordTransaction(state, action) {
   console.log(`[INFO]: Record the transaction in the checkbook`)
@@ -51,7 +43,7 @@ function recordTransaction(state, action) {
 //    [x] 4.) VERIFY THAT UPDATES ARE WORKING AS EXPECTED
 //
 // - CLEANUP CODE
-//    1.) FIX THE DATE ISSUE IN THE EDIT TRANSACTIONS
+//    [x] 1.) FIX THE DATE ISSUE IN THE EDIT TRANSACTIONS
 //    2.) IMPLEMENT IMMUTABLEJS FOR HANDLING DATA STRUCTURES
 //
 // - REFACTOR TRANSACTION CODE
