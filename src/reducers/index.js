@@ -1,8 +1,6 @@
 //-----------------------------------------------------------------------------
 // src/reducers/index.js
 //-----------------------------------------------------------------------------
-import moment         from 'moment'
-
 import {
   ADD_TRANSACTION,
   UPDATE_TRANSACTION,
@@ -33,29 +31,6 @@ function recordTransaction(state, action) {
   return newState
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// TODO: 04/08/2018
-//
-// [x] -  IMPLEMENT UPDATING OF TRANSACTIONS BY:
-//    [x] 1.) HOOK UP THE MAP-PROPS AND MAP-DISPATCH TO STATES IN CONTAINERS
-//    [x] 2.) HOOK UP UPDATE TO CALL THIS REDUCER
-//    [x] 3.) ITERATE THROUGH LIST AND UPDATE THE TRANSACTION
-//    [x] 4.) VERIFY THAT UPDATES ARE WORKING AS EXPECTED
-//
-// - CLEANUP CODE
-//    [x] 1.) FIX THE DATE ISSUE IN THE EDIT TRANSACTIONS
-//    2.) IMPLEMENT IMMUTABLEJS FOR HANDLING DATA STRUCTURES
-//
-// - REFACTOR TRANSACTION CODE
-//   Currently, I'm passing in the updateTransaction as a property to the
-//   Transaction component which seems incorrect in a react-redux app. Want 
-//   to create a separate EditTransaction component for handling updates
-//    1.) CREATE A SEPARATE EDIT_TRANSACTION_FORM COMPONENT AND THEN MAP THE
-//        UPDATE-TRANSACTION ACTION TO THE EDIT_TRANSACTION_FORM
-//    2.) CHANGE THE TRANSACTION RENDER TO RENDER THE EDIT_TRANSACTION_FORM
-//        INSTEAD OF THE HARD-CODED FORM
-//    3.) MAY BE A PATTERN TO SPLIT TRANSACTION INTO TRANSACTION_VIEW?
-///////////////////////////////////////////////////////////////////////////////
 function updateTransaction(state, action) {
   /////////////////////////////////////////////////////////////////////////////
   // TODO: 04/08/2018

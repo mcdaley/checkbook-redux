@@ -63,7 +63,7 @@ export default class EditTransactionForm extends React.Component {
 
     let transaction  = {
       id:           this.state.transaction.id,
-      date:         this.state.transaction.date,
+      date:         new Date(this.state.transaction.date),
       description:  this.state.transaction.description,     
       amount:       Number(this.state.transaction.amount),
     }

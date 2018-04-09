@@ -3,7 +3,7 @@
 //-----------------------------------------------------------------------------
 import React                        from 'react'
 import PropTypes                    from 'prop-types'
-import EditTransactionForm          from './edit_transaction_form'
+import EditTransaction              from '../containers/edit_transaction'
 import {formatCurrency, formatDate} from '../utils/utils'
 
 export default class Transaction extends React.Component {
@@ -11,7 +11,7 @@ export default class Transaction extends React.Component {
     super(props)
 
     this.state = {
-      edit:         false,
+      edit: false,
     }
 
     this.handleEdit         = this.handleEdit.bind(this)
@@ -79,11 +79,11 @@ export default class Transaction extends React.Component {
    * Display the inlined edit transaction form
    */
   renderEditTransactionForm() {
+    console.log(`[DEBUG]: Debug render transaction`)
     return (
-      <EditTransactionForm
-        transaction       = {this.props.transaction}
-        toggleEdit        = {this.toggleEdit} 
-        updateTransaction = {this.props.updateTransaction}
+      <EditTransaction
+        transaction   = {this.props.transaction}
+        toggleEdit    = {this.toggleEdit} 
       />
     )
   }

@@ -3,10 +3,9 @@
 //-----------------------------------------------------------------------------
 import { connect }              from 'react-redux'
 import { updateTransaction }    from '../actions'
-import Transaction              from '../components/transaction'
+import EditTransactionForm      from '../components/edit_transaction_form'
 
 const mapStateToProps = (state, ownProps) => ({
-  transaction: state.transactions
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -16,8 +15,8 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const EditTransaction = connect(
-  mapStateToProps, 
-  {}
-)(Transaction)
+  mapStateToProps,
+  mapDispatchToProps
+)(EditTransactionForm)
 
 export default EditTransaction
