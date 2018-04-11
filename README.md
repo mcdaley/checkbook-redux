@@ -4,19 +4,18 @@ creating an online checkbook for tracking all of the transactions in your
 checkbook.
 
 # To Do
-[x] 1. Setup the environment
-  [x] * Use create-react-app to create project
-  [x] * Install and configure bootstrap
-        - Set up with npm and tested overrides
-  [x] * Install redux and react-redux
-[x] 2. Create basic styled homepage
-  [x] * Remove the default app layout
-  [x] * Add top-level navbar
-        - Navigation links are not coded yet
-3. Get original quickbooks working w/o backend
-  * Add PropTypes for components
-  * Add transaction component
-  * Edit transaction component?
+1. Add ability to delete a transaction
+2. Migrate state to Immutablejs
+3. Calculate credits, debits, and balance
+4. Switch Amount to Charge and Payments
+5. Filter transactions by credits, debits, all
+    * Clicking on Credits, Debits, Balance filters transactions
+6. Cleanup the reducers and look at combineReducers
+
+# Bugs
+1. Transaction.date prop-type changes between Date and String.
+    * Test the deep-copy of the transaction object to see if that
+      causes the Date to be converted to String
 
 
 # Questions

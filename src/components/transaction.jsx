@@ -3,8 +3,8 @@
 //-----------------------------------------------------------------------------
 import React                        from 'react'
 import PropTypes                    from 'prop-types'
+import TransactionView              from './transaction_view'
 import EditTransaction              from '../containers/edit_transaction'
-import {formatCurrency, formatDate} from '../utils/utils'
 
 export default class Transaction extends React.Component {
   constructor(props) {
@@ -14,8 +14,9 @@ export default class Transaction extends React.Component {
       edit: false,
     }
 
-    this.handleEdit         = this.handleEdit.bind(this)
-    this.toggleEdit         = this.toggleEdit.bind(this)
+    this.handleEdit     = this.handleEdit.bind(this)
+    this.toggleEdit     = this.toggleEdit.bind(this)
+    this.handleDelete   = this.handleDelete.bind(this)
   }
 
   handleEdit(e) {
@@ -29,49 +30,23 @@ export default class Transaction extends React.Component {
     }))
   }
 
+  handleDelete(e) {
+    e.preventDefault()
+    console.log(`[DEBUG]: Dummy function for deleting a transaction`)
+    this.props.deleteTransaction(this.props.transaction)
+  }
+
   /****
    * Render the transaction
    */
-  renderTransaction() {
+  renderTransactionView() {
+    console.log(`[DEBUG]: render TransactionView`)
     return (
-      <tr 
-        id={`transaction-id-${this.props.transaction.id}`}
-      >
-        <td 
-          className="text-left"
-        >  
-          {formatDate(this.props.transaction.date)}
-        </td>
-        <td 
-          className="text-left"
-        >  
-          {this.props.transaction.description}  
-        </td>
-        <td 
-          className="text-right"
-        > 
-          {formatCurrency(this.props.transaction.amount)}       
-        </td>
-        <td>
-          <span>
-            <button 
-              type      = "button" 
-              className = "btn btn-sm btn-primary" 
-              onClick   = {this.handleEdit}
-            >   
-              Edit    
-            </button>
-            <button 
-              type      = "button" 
-              className = "btn btn-sm btn-danger" 
-              style     = {{marginLeft: 0.50 + "rem"}}  
-              onClick   = {this.handleDelete}
-            > 
-              Delete  
-            </button>
-          </span>
-        </td>
-      </tr>
+      <TransactionView
+        transaction   = {this.props.transaction}
+        handleEdit    = {this.handleEdit}
+        handleDelete  = {this.handleDelete}
+      />
     )
   }
 
@@ -79,7 +54,7 @@ export default class Transaction extends React.Component {
    * Display the inlined edit transaction form
    */
   renderEditTransactionForm() {
-    console.log(`[DEBUG]: Debug render transaction`)
+    console.log(`[DEBUG]: render inline edit transaction`)
     return (
       <EditTransaction
         transaction   = {this.props.transaction}
@@ -93,7 +68,7 @@ export default class Transaction extends React.Component {
    * edit transaction form
    */
   render() {
-    return this.state.edit ? this.renderEditTransactionForm() : this.renderTransaction()
+    return this.state.edit ? this.renderEditTransactionForm() : this.renderTransactionView()
   }
 }
 

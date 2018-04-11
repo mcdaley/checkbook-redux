@@ -3,13 +3,18 @@
 //-----------------------------------------------------------------------------
 import React            from 'react'
 import PropTypes        from 'prop-types'
+import Link             from './link'
 import {formatCurrency} from '../utils/utils'
 
 const AmountBox = (props) => {
   return (
     <div className="card">
       <div className="card-header">
-        {props.label}
+        <Link
+          label   = {props.label}
+          onClick = {props.onClick}
+        />
+
       </div>
       <div className="card-body account-card-body">
         <h5 className="card-title account-card-title">

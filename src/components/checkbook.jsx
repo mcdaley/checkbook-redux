@@ -12,6 +12,14 @@ export default class Checkbook extends React.Component {
 
   constructor(props) {
     super(props)
+
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  // Handle the filter click on debits, credit, balance
+  handleClick(e) {
+    e.preventDefault()
+    console.log(`[DEBUG]: Handle the filter transaction click`)
   }
 
   render() {
@@ -22,6 +30,7 @@ export default class Checkbook extends React.Component {
           credits = {250.00}
           debits  = {150.00}
           balance = {100.00}
+          onClick = {this.handleClick}
         />
         <AddTransaction />
         <VisibleTransactionList />

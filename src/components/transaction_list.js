@@ -1,19 +1,18 @@
 //-----------------------------------------------------------------------------
 // src/components/transaction_list.js
 //-----------------------------------------------------------------------------
-import React          from 'react'
-import PropTypes      from 'prop-types'
-import Transaction    from './transaction'  
+import React            from 'react'
+import PropTypes        from 'prop-types'
+import TransactionMgr   from '../containers/transaction_mgr'  
 
 const TransactionList = (props) => {
 
   let rows = []
   props.transactions.forEach( (transaction) => {
     rows.push(
-      <Transaction
+      <TransactionMgr
         key               = {transaction.id}
         transaction       = {transaction}
-        updateTransaction = {props.updateTransaction}
       />
     )
   })

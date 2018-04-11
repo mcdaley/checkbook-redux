@@ -4,6 +4,9 @@
 import {
   ADD_TRANSACTION,
   UPDATE_TRANSACTION,
+  DELETE_TRANSACTION,
+  SET_VISIBILITY_FILTER,
+  VisibilityFilters,
 } from '../actions'
 
 const initialState = {
@@ -21,6 +24,7 @@ const initialState = {
       amount:       -25.00 
     },
   ],
+  visibilityFilter: VisibilityFilters.SHOW_ALL,
 }
 
 function recordTransaction(state, action) {
@@ -32,18 +36,29 @@ function recordTransaction(state, action) {
 }
 
 function updateTransaction(state, action) {
-  /////////////////////////////////////////////////////////////////////////////
-  // TODO: 04/08/2018
-  // - action.transaction contains the new transaction, need to find the 
-  //   transaction in state.transactions with the same id and replace it
-  //   with the updated transaction.
-  /////////////////////////////////////////////////////////////////////////////
   console.log(`[INFO]: Update the checkbook transaction`)
   let index = state.transactions.findIndex(
     el => { return el.id === action.transaction.id } 
   )
+  let newState                  = JSON.parse(JSON.stringify(state))
+  newState.transactions[index]  = action.transaction
+  return newState
+}
+
+function deleteTransaction(state, action) {
+  console.log(`[INFO]: Delete transaction`)
+  let index = state.transactions.findIndex(
+    el => { return el.id === action.transaction.id }
+  )
   let newState = JSON.parse(JSON.stringify(state))
-  newState.transactions[index] = action.transaction
+  newState.transactions.splice(index, 1)
+  return newState
+}
+
+function visibilityFilter(state, action) {
+  console.log(`[INFO]: Filter the transaction list`)
+  let newState              = JSON.parse(JSON.stringify(state))
+  newState.visibilityFilter = action.filter
   return newState
 }
 
@@ -53,6 +68,10 @@ function reducer(state = initialState, action) {
       return recordTransaction(state, action)
     case UPDATE_TRANSACTION:
       return updateTransaction(state, action)
+    case DELETE_TRANSACTION:
+      return deleteTransaction(state, action)
+    case SET_VISIBILITY_FILTER:
+      return visibilityFilter(state, action)
     default:
       return state
   }

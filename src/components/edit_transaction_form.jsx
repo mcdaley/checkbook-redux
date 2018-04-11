@@ -2,7 +2,6 @@
 // src/components/edit_transaction_form.js
 //-----------------------------------------------------------------------------
 import React          from 'react'
-import PropTypes      from 'prop-types'
 import {formatDate}   from '../utils/utils'
 
 export default class EditTransactionForm extends React.Component {
