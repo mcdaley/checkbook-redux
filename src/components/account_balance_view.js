@@ -1,11 +1,11 @@
 //-----------------------------------------------------------------------------
-// src/components/account_balance.js
+// src/components/account_balance_view.js
 //-----------------------------------------------------------------------------
 import React        from 'react'
 import PropTypes    from 'prop-types'
 import AmountBox    from './amount_box'
 
-const AccountBalance = (props) => {
+const AccountBalanceView = (props) => {
   return (
     <div className="row account-balance-row">
       <div className="col-4">
@@ -31,12 +31,12 @@ const AccountBalance = (props) => {
 }
 
 // Prop-Types
-AccountBalance.propTypes = {
+AccountBalanceView.propTypes = {
   credits:  PropTypes.number.isRequired,
   debits:   PropTypes.number.isRequired,
   balance:  PropTypes.number.isRequired,
 }
 
 // Export component
-export default AccountBalance
+export default AccountBalanceView
 
