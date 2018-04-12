@@ -3,16 +3,28 @@
 //-----------------------------------------------------------------------------
 import React            from 'react'
 import PropTypes        from 'prop-types'
-import Link             from './link'
+import FilterLink       from '../containers/filter_link'
 import {formatCurrency} from '../utils/utils'
 
 const AmountBox = (props) => {
+  function getFilter(label) {
+    switch(label) {
+      case  'Credits':
+        return 'SHOW_CREDITS'
+      case  'Debits':
+        return 'SHOW_DEBITS'
+      case  'Balance':
+      default:
+        return 'SHOW_ALL'
+    }
+  }
+
   return (
     <div className="card">
       <div className="card-header">
-        <Link
+        <FilterLink
           label   = {props.label}
-          onClick = {props.onClick}
+          filter  = {getFilter(props.label)}
         />
 
       </div>

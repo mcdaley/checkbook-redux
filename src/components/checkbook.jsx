@@ -30,7 +30,6 @@ export default class Checkbook extends React.Component {
           credits = {250.00}
           debits  = {150.00}
           balance = {100.00}
-          onClick = {this.handleClick}
         />
         <AddTransaction />
         <VisibleTransactionList />
