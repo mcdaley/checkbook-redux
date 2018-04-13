@@ -20,13 +20,16 @@ export default class AddTransactionForm extends React.Component {
     this.state = {
       date:         '',
       description:  '',
+      charge:       '',
+      payment:      '',
       amount:       '',
       errors:       {},
     }
 
     this.handleDate         = this.handleDate.bind(this)
     this.handleDescription  = this.handleDescription.bind(this)
-    this.handleAmount       = this.handleAmount.bind(this)
+    this.handleCharge       = this.handleCharge.bind(this)
+    this.handlePayment      = this.handlePayment.bind(this)
     this.resetInitialState  = this.resetInitialState.bind(this)
     this.handleSubmit       = this.handleSubmit.bind(this)
     this.handleClear        = this.handleClear.bind(this)
@@ -36,6 +39,8 @@ export default class AddTransactionForm extends React.Component {
     this.setState({
       date:         '',
       description:  '',
+      charge:       '',
+      payment:      '',
       amount:       '',
       errors:       {},
     })
@@ -53,9 +58,19 @@ export default class AddTransactionForm extends React.Component {
     })
   }
 
-  handleAmount(e) {
+  handleCharge(e) {
     this.setState({
-      amount: e.target.value,
+      charge:   e.target.value,
+      amount:   -1 * e.target.value,
+      payment:  '',
+    })
+  }
+
+  handlePayment(e) {
+    this.setState({
+      payment:  e.target.value,
+      amount:   e.target.value,
+      charge:   '',
     })
   }
 
@@ -65,7 +80,9 @@ export default class AddTransactionForm extends React.Component {
     let transaction  = {
       id:           Global_Id_Ctr++,  // Dummy unique id
       date:         new Date(this.state.date),
-      description:  this.state.description,     
+      description:  this.state.description,
+      charge:       this.state.charge,
+      payment:      this.state.payment,    
       amount:       Number(this.state.amount),
     }
 
@@ -98,7 +115,7 @@ export default class AddTransactionForm extends React.Component {
                 >
                 </input>
               </div>
-              <div className="col-5">
+              <div className="col-3">
                 <label 
                   className = "sr-only"
                 >
@@ -118,15 +135,31 @@ export default class AddTransactionForm extends React.Component {
                 <label 
                   className   = "sr-only"
                 >
-                  Amount
+                  Charge
                 </label>
                 <input  
                   type        = "text"
-                  onChange    = {this.handleAmount}
+                  onChange    = {this.handleCharge}
                   className   = "form-control"
-                  id          = "txnAmount" 
-                  placeholder = "Amount" 
-                  value       = {this.state.amount} 
+                  id          = "txnCharge" 
+                  placeholder = "Charge" 
+                  value       = {this.state.charge} 
+                >
+                </input>
+              </div>
+              <div className="col-2">
+                <label 
+                  className   = "sr-only"
+                >
+                  Payment
+                </label>
+                <input  
+                  type        = "text"
+                  onChange    = {this.handlePayment}
+                  className   = "form-control"
+                  id          = "txnPayment" 
+                  placeholder = "Payment" 
+                  value       = {this.state.payment} 
                 >
                 </input>
               </div>

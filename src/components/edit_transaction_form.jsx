@@ -15,6 +15,8 @@ export default class EditTransactionForm extends React.Component {
 
     this.handleDate         = this.handleDate.bind(this)
     this.handleDescription  = this.handleDescription.bind(this)
+    this.handleCharge       = this.handleCharge.bind(this)
+    this.handlePayment      = this.handlePayment.bind(this)
     this.handleAmount       = this.handleAmount.bind(this)
     this.handleUpdate       = this.handleUpdate.bind(this)
     this.handleCancel       = this.handleCancel.bind(this)
@@ -47,6 +49,28 @@ export default class EditTransactionForm extends React.Component {
        transaction: transaction,
      })
    }
+
+   handleCharge(e) {
+     let transaction      = Object.assign({}, this.state.transaction)
+     transaction.charge   = e.target.value
+     transaction.amount   = -1 * e.target.value
+     transaction.payment  = ''
+
+     this.setState({
+       transaction: transaction
+     })
+   }
+
+   handlePayment(e) {
+    let transaction       = Object.assign({}, this.state.transaction)
+    transaction.payment   = e.target.value
+    transaction.amount    = e.target.value
+    transaction.charge    = ''
+
+    this.setState({
+      transaction: transaction
+    })
+  }
  
    handleAmount(e) {
      let transaction     = Object.assign({}, this.state.transaction)
@@ -63,7 +87,9 @@ export default class EditTransactionForm extends React.Component {
     let transaction  = {
       id:           this.state.transaction.id,
       date:         new Date(this.state.transaction.date),
-      description:  this.state.transaction.description,     
+      description:  this.state.transaction.description,
+      charge:       this.state.charge,
+      payment:      this.state.payment,  
       amount:       Number(this.state.transaction.amount),
     }
 
@@ -145,15 +171,32 @@ export default class EditTransactionForm extends React.Component {
                 <label 
                   className = "sr-only"
                 >
-                  Amount
+                  Charge
                 </label>
                 <input  
                   type        = "text" 
-                  onChange    = {this.handleAmount} 
+                  onChange    = {this.handleCharge} 
                   className   = { this.hasError('amount') ? "form-control has-error" : "form-control" }
-                  id          = "txnAmount" 
-                  placeholder = "Amount" 
-                  value       = {transaction.amount} 
+                  id          = "txnCharge" 
+                  placeholder = "Charge" 
+                  value       = {transaction.amount < 0 ? -1 * transaction.amount : ''} 
+                >
+                </input>
+                { this.showErrorMessage('amount') } 
+              </div>
+              <div className = "col-2">
+                <label 
+                  className = "sr-only"
+                >
+                  Payment
+                </label>
+                <input  
+                  type        = "text" 
+                  onChange    = {this.handlePayment} 
+                  className   = { this.hasError('amount') ? "form-control has-error" : "form-control" }
+                  id          = "txnPayment" 
+                  placeholder = "Payment" 
+                  value       = {transaction.amount >= 0 ? transaction.amount : ''} 
                 >
                 </input>
                 { this.showErrorMessage('amount') } 
