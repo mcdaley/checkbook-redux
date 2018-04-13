@@ -7,6 +7,14 @@
   //** background-color:        $body-bkgrd;
 }
 
-.account-card-body {
+.account-card-body-credits {
+  background-color:         lightgreen;
+}
+
+.account-card-body-debits {
   background-color:         pink;
+}
+
+.account-card-body-balance {
+  background-color:         lightblue;
 }
