@@ -1,11 +1,11 @@
 //-----------------------------------------------------------------------------
-// src/components/link.js
+// src/components/transaction_filter_link.js
 //-----------------------------------------------------------------------------
 import React                  from 'react'
 import PropTypes              from 'prop-types'
 import { VisibilityFilters }  from '../actions' 
 
-export default class Link extends React.Component {
+export default class TransactionFilterLink extends React.Component {
   constructor(props) {
     super(props)
 

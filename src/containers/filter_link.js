@@ -3,7 +3,7 @@
 //-----------------------------------------------------------------------------
 import { connect }              from 'react-redux'
 import { setVisibilityFilter }  from '../actions'
-import Link                     from '../components/link'
+import TransactionFilterLink    from '../components/transaction_filter_link'
 
 const mapStateToProps = (state, ownProps) => ({
   filter: ownProps.filter
@@ -18,6 +18,6 @@ const mapDispatchToProps = (dispatch) => ({
 const FilterLink = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Link)
+)(TransactionFilterLink)
 
 export default FilterLink
